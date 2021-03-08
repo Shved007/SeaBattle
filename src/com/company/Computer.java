@@ -1,0 +1,121 @@
+package com.company;
+
+import java.util.Random;
+
+public class Computer extends SeaBattle {
+    public PlayersInfo playersInfo;
+    public static Audio alarm;
+    public static Random random = new Random();
+
+    public Computer(PlayersInfo playersInfo) {
+        this.playersInfo = playersInfo;
+    }
+
+    @Override
+    void pcBattlefield(String[][] pcSea) {
+        for (int ryad = 0; ryad < pcSea.length; ryad++) {
+            for (int stovp = 0; stovp < pcSea.length; stovp++) {
+                pcSea[ryad][stovp] = "*";
+            }
+        }
+        pcSea[0][0] = " ";
+        pcSea[0][1] = "1"; pcSea[1][0] = "1";
+        pcSea[0][2] = "2"; pcSea[2][0] = "2";
+        pcSea[0][3] = "3"; pcSea[3][0] = "3";
+        pcSea[0][4] = "4"; pcSea[4][0] = "4";
+        pcSea[0][5] = "5"; pcSea[5][0] = "5";
+        pcSea[0][6] = "6"; pcSea[6][0] = "6";
+        pcSea[0][7] = "7"; pcSea[7][0] = "7";
+        pcSea[0][8] = "8"; pcSea[8][0] = "8";
+        pcSea[0][9] = "9"; pcSea[9][0] = "9";
+    }
+
+    @Override
+    void pcBattlefieldWithShip(String[][] pcSea) {
+        System.out.println("Поле бою Компютера");
+        for (int ryad = 0; ryad < pcSea.length; ryad++) {
+            for (int stovp = 0; stovp < pcSea.length; stovp++) {
+                System.out.print(" " + pcSea[ryad][stovp] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    @Override
+    void pcShipCoordinate(String[][] pcSea) {
+        int ryad = getRandomNumber();
+        int stovp = getRandomNumber();
+        pcSea[ryad][stovp] = "P";
+
+        int ryad2 = getRandomNumber();
+        int stovp2 = getRandomNumber();
+        pcSea[ryad2][stovp2] = "P";
+
+        int ryad3 = getRandomNumber();
+        int stovp3 = getRandomNumber();
+        pcSea[ryad3][stovp3] = "P";
+
+        int ryad4 = getRandomNumber();
+        int stovp4 = getRandomNumber();
+        pcSea[ryad4][stovp4] = "P";
+
+        int ryad5 = getRandomNumber();
+        int stovp5 = getRandomNumber();
+        pcSea[ryad5][stovp5] = "P";
+
+    }
+
+    @Override
+    void pcShots(String[][]playerSea, String name, int score) {
+        alarm = new Audio("sounds/Truvoga.wav",0.60);
+        boolean check = false;
+        do {
+            int pcShotCoord1 = getRandomNumber();
+            int pcShotCoord2 = getRandomNumber();
+            if (playerSea[pcShotCoord1][pcShotCoord2].equals("*")) {
+                System.out.println("Вистріл робить " + this.playersInfo.getName());
+                if (playerSea[pcShotCoord1][pcShotCoord2].equals("P")) {
+                    alarm.sound();
+                    alarm.setVolume();
+                    playerSea[pcShotCoord1][pcShotCoord2] = "X";
+                    System.out.println("Корабель " + name + " ЗНИЩЕНО!");
+                    int newScore = this.playersInfo.getScore() + 1;
+                    this.playersInfo.setScore(newScore);
+                    check = true;
+                } else {
+                    System.out.println("ПРОМАХ!");
+                    playerSea[pcShotCoord1][pcShotCoord2] = "O";
+                    check = true;
+                }
+
+            } else if (playerSea[pcShotCoord1][pcShotCoord2].equals("P")) {
+                if (playerSea[pcShotCoord1][pcShotCoord2].equals("P")) {
+                    alarm.sound();
+                    alarm.setVolume();
+                    playerSea[pcShotCoord1][pcShotCoord2] = "X";
+                    System.out.println("Корабель " + name + " ЗНИЩЕНО!");
+                    int newScore = this.playersInfo.getScore() + 1;
+                    this.playersInfo.setScore(newScore);
+                } else {
+                    playerSea[pcShotCoord1][pcShotCoord2] = "O";
+                }
+                check = true;
+            }
+
+        } while(!check);
+
+    }
+
+    public static int getRandomNumber() {
+        int max = 9;
+        int min = 1;
+        return random.nextInt(max - min) + min;
+    }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "playersInfo=" + playersInfo +
+                '}';
+    }
+}
