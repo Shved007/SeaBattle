@@ -13,6 +13,7 @@ public class Main {
     public static SeaBattle player = new Player(playerInfo);
     public static SeaBattle comp = new Computer(compInfo);
     public static Audio startGame = new Audio("sounds/startGame.wav", 0.60);
+    public static Audio gameOver = new Audio("sounds/GameOver.wav",0.60);
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -43,6 +44,10 @@ public class Main {
             player.seaOpponent(seaToChek);
             player.playerBattlefieldWithShip(playerSea);
             if (playerInfo.getScore() == 5) {
+                Thread.sleep(2000);
+                gameOver.sound();
+                gameOver.setVolume();
+                Thread.sleep(2000);
                 System.out.println("Гру завершено\n" +
                         "Переміг " + playerInfo.getName());
                 System.out.println("Очки " + playerInfo.getName() + " :" + playerInfo.getScore());
@@ -51,6 +56,10 @@ public class Main {
                 player.playerBattlefieldWithShip(playerSea);
                 battleChek = false;
             } else if (compInfo.getScore() == 5) {
+                Thread.sleep(2000);
+                gameOver.sound();
+                gameOver.setVolume();
+                Thread.sleep(2000);
                 System.out.println("Гру завершено\n" +
                         "Переміг " + compInfo.getName());
                 System.out.println("Очки " + playerInfo.getName() + " :" + playerInfo.getScore());
@@ -78,8 +87,8 @@ public class Main {
         startGame.sound();
         startGame.setVolume();
         System.out.println("===Welcome to the SEA BATTLE===");
-        System.out.println("Якщо Ви хочете зіграти в ігру  введіть Start");
-        System.out.println("Якщо Ви хочете зіграти в ігру іншим разом введіть Exit");
+        System.out.println("Для початку гри  введіть Start");
+        System.out.println("Для виходу введіть Exit");
         String chooseStart = sc.nextLine();
         return chooseStart;
     }

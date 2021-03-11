@@ -57,35 +57,95 @@ public class Player extends SeaBattle {
 
     @Override
     public void playerShipCoordinate(String[][] playerSea) {
-        System.out.println("Введіть координати Корабля №1, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
-        int ryad = scanner.nextInt();
-        int stovp = scanner.nextInt();
-        playerSea[ryad][stovp] = "P";
-        playerBattlefieldWithShip(playerSea);
+        int ryad, ryad2, ryad3, ryad4, ryad5;
+        int stovp, stovp2, stovp3, stovp4, stovp5;
+        boolean checkCoords = false;
+        boolean checkCoords2 = false;
+        boolean checkCoords3 = false;
+        boolean checkCoords4 = false;
+        boolean checkCoords5 = false;
 
-        System.out.println("Введіть координати Корабля №2, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
-        int ryad2 = scanner.nextInt();
-        int stovp2 = scanner.nextInt();
-        playerSea[ryad2][stovp2] = "P";
-        playerBattlefieldWithShip(playerSea);
+        System.out.println("Введіть координати Корабля №1 через ПРОБІЛ, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
+        do {
+            ryad = scanner.nextInt();
+            stovp = scanner.nextInt();
+            if (ryad >= 1 && ryad <= 9 && stovp >= 1 && stovp <= 9) {
+                playerSea[ryad][stovp] = "P";
+                playerBattlefieldWithShip(playerSea);
+                checkCoords = true;
+            } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+        } while(!checkCoords);
 
-        System.out.println("Введіть координати Корабля №3, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
-        int ryad3 = scanner.nextInt();
-        int stovp3 = scanner.nextInt();
-        playerSea[ryad3][stovp3] = "P";
-        playerBattlefieldWithShip(playerSea);
 
-        System.out.println("Введіть координати Корабля №4, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
-        int ryad4 = scanner.nextInt();
-        int stovp4 = scanner.nextInt();
-        playerSea[ryad4][stovp4] = "P";
-        playerBattlefieldWithShip(playerSea);
+        System.out.println("Введіть координати Корабля №2 через ПРОБІЛ, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
+        do {
+            ryad2 = scanner.nextInt();
+            stovp2 = scanner.nextInt();
+            if (ryad2 >= 1 && ryad2 <= 9 && stovp2 >= 1 && stovp2 <= 9) {
+                if (ryad2 != ryad || stovp2 != stovp) {
+                    playerSea[ryad2][stovp2] = "P";
+                    playerBattlefieldWithShip(playerSea);
+                    checkCoords2 = true;
+                } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+            } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+        } while(!checkCoords2);
 
-        System.out.println("Введіть координати Корабля №5, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
-        int ryad5 = scanner.nextInt();
-        int stovp5 = scanner.nextInt();
-        playerSea[ryad5][stovp5] = "P";
-        playerBattlefieldWithShip(playerSea);
+
+        System.out.println("Введіть координати Корабля №3 через ПРОБІЛ, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
+        do {
+            ryad3 = scanner.nextInt();
+            stovp3 = scanner.nextInt();
+            if (ryad3 >= 1 && ryad3 <= 9 && stovp3 >= 1 && stovp3 <= 9) {
+                if (ryad3 != ryad2 || stovp3 != stovp2) {
+                    if (ryad3 != ryad || stovp3 != stovp) {
+                        playerSea[ryad3][stovp3] = "P";
+                        playerBattlefieldWithShip(playerSea);
+                        checkCoords3 = true;
+                    } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+                } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+            } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+        } while(!checkCoords3);
+
+
+        System.out.println("Введіть координати Корабля №4 через ПРОБІЛ, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
+        do {
+            ryad4 = scanner.nextInt();
+            stovp4 = scanner.nextInt();
+            if (ryad4 >= 1 && ryad4 <= 9 && stovp4 >= 1 && stovp4 <= 9) {
+                if (ryad4 != ryad3 || stovp4 != stovp3) {
+                    if (ryad4 != ryad2 || stovp4 != stovp2) {
+                        if (ryad4 != ryad || stovp4 != stovp) {
+                            playerSea[ryad4][stovp4] = "P";
+                            playerBattlefieldWithShip(playerSea);
+                            checkCoords4 = true;
+                        } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+                    } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+                } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+            } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+        } while(!checkCoords4);
+
+
+        System.out.println("Введіть координати Корабля №5 через ПРОБІЛ, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
+        do {
+            ryad5 = scanner.nextInt();
+            stovp5 = scanner.nextInt();
+            if (ryad5 >= 1 && ryad5 <= 9 && stovp5 >= 1 && stovp5 <= 9) {
+                if (ryad5 != ryad4 || stovp5 != stovp4) {
+                    if (ryad5 != ryad3 || stovp5 != stovp3) {
+                        if (ryad5 != ryad2 || stovp5 != stovp2) {
+                            if (ryad5 != ryad || stovp5 != stovp) {
+                                playerSea[ryad5][stovp5] = "P";
+                                playerBattlefieldWithShip(playerSea);
+                                checkCoords5 = true;
+                            } else
+                                System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+                        } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+                    } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+                } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+            } else System.out.println("Вибране розміщення не може бути використане... Спробуйте ще раз:");
+        } while(!checkCoords5);
+
+
     }
 
     @Override
@@ -95,15 +155,19 @@ public class Player extends SeaBattle {
         explosion = new Audio("sounds/boom.wav", 0.8);
         shotOnTarget = new Audio("sounds/est-probitie.wav", 0.8);
         System.out.println("Вистріл робить: " + this.playersInfo.getName());
-        System.out.println("Введіть координати вистрілу, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
+        System.out.println("Введіть координати вистрілу через ПРОБІЛ, введіть рядок(від 1-9) і введіть стовпчик(від 1-9)");
         do {
             int playerShotCoord1 = scanner.nextInt();
             int playerShotCoord2 = scanner.nextInt();
-            shot.sound();
-            shot.setVolume();
-            Thread.sleep(1500);
+
             if (playerShotCoord1 >= 0 && playerShotCoord1 < pcSea.length && playerShotCoord2 >= 0 && playerShotCoord2 < pcSea.length && pcSea[playerShotCoord1][playerShotCoord2].equals("*")) {
+                shot.sound();
+                shot.setVolume();
+                Thread.sleep(1500);
                 if (pcSea[playerShotCoord1][playerShotCoord2].equals("P")) {
+                    shot.sound();
+                    shot.setVolume();
+                    Thread.sleep(1500);
                     shotOnTarget.sound();
                     shotOnTarget.setVolume();
                     pcSea[playerShotCoord1][playerShotCoord2] = "X";
@@ -121,6 +185,9 @@ public class Player extends SeaBattle {
                 shotsCheck = true;
             } else if (playerShotCoord1 >= 0 && playerShotCoord1 < pcSea.length && playerShotCoord2 >= 0 && playerShotCoord2 < pcSea.length && pcSea[playerShotCoord1][playerShotCoord2].equals("P")) {
                 if (pcSea[playerShotCoord1][playerShotCoord2].equals("P")) {
+                    shot.sound();
+                    shot.setVolume();
+                    Thread.sleep(1500);
                     shotOnTarget.sound();
                     shotOnTarget.setVolume();
                     pcSea[playerShotCoord1][playerShotCoord2] = "X";
@@ -188,6 +255,5 @@ public class Player extends SeaBattle {
                 "playersInfo=" + playersInfo +
                 '}';
     }
-
 
 }
