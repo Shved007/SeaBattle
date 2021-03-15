@@ -120,8 +120,8 @@ public class Computer extends SeaBattle {
             if (playerSea[pcShotCoord1][pcShotCoord2].equals("*")) {
                 System.out.println("Вистріл робить " + this.playersInfo.getName());
 
-                    System.out.println("ПРОМАХ!");
-                    playerSea[pcShotCoord1][pcShotCoord2] = "O";
+                System.out.println("ПРОМАХ!");
+                playerSea[pcShotCoord1][pcShotCoord2] = "O";
 
                 check = true;
 
